@@ -33,17 +33,19 @@ def essid(entry):
 def getDist(thelist):
     # print clean results sorted by RSSI
     thelist.sort()
-    print("\033[1;34;40m Wifi broadcasts from nearest to furthest:")
+    print("\033[1;34;40m Wifi broadcasts sorted by signal strength:")
     title()
     for ents in range(len(thelist)):
-        num = str(ents + 1)
-        if ents < (len(thelist) // 3):
-            print("\033[1;32;40m", end="")
-        elif ents >= (len(thelist) // 3) and ents <= ((len(thelist) // 3) * 2):
-            print("\033[1;33;40m", end="")
-        else:
-            print("\033[1;31;40m", end="")
-        print(thelist[ents])
+        #Turn RSSI into positive int
+        rssi = thelist[ents]
+        numtemp = (rssi[0])
+        num = int(numtemp[1: ])
+        if num < 51:
+            print("\033[1;32;40m", thelist[ents])
+        elif num > 50 and num <= 75:
+            print("\033[1;33;40m", thelist[ents])
+        elif num > 75:
+            print("\033[1;31;40m", thelist[ents])
 
 #Used as a sorted() key for channel
 def take_chan(elem):
@@ -116,8 +118,8 @@ result = newlist
 print("Choose how to sort the access point list:")
 keystroke = "a"
 while keystroke != "q" and keystroke != "Q":
-    keystroke = input("(D)istance, (N)ame, (C)hannel, (Q)uit ")
-    if keystroke == "d" or keystroke =="D":
+    keystroke = input("(S)trength, (N)ame, (C)hannel, (Q)uit ")
+    if keystroke == "s" or keystroke =="S":
         getDist(result)
         txt_reset()
     elif keystroke == "c" or keystroke =="C":
