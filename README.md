@@ -1,7 +1,7 @@
 # Python_Projects
 ezscanap.py: A utility for sorting Flipper/Maurauder scanap.log files. You will be prompted to enter the filepath and file name 
 of the log (eg. /home/<user>/Documents/<logfile.log>). The utility will allow you to sort the log according to name (SSID), channel,
-or signal strength (RSSI).
+or signal strength (RSSI). It can also print scatterplot diagrams for all three outputs if the user installs the matplotlib and numpy modules.
 
 ezbeak.py: A utility for pulling individual wifi network names (ESSID) out of a beacon sniffing log. Capture the log using 
 Flipper/Marauder -> Applications -> GPIO -> Maurader -> Sniff: Beacon. Download the captured file. Then run python3 eazybeak.py.
